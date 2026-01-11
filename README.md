@@ -287,13 +287,13 @@ The authorize screen: user: |`DB_USER`| and password: |`DB_PASSWORD`| in the `.e
 
 #### Database
 
-Postgres account; |```Host: database; Port: 5432; Database: `DB_NAME`; User: `DB_USER`; Password: `DB_PASSWORD````| in the `.env` file.
+Postgres account; |Host: database; Port: 5432; Database: `DB_NAME`; User: `DB_USER`; Password: `DB_PASSWORD`| in the `.env` file.
 
 #### pgAdmin
 
-You can also visit |```https://`DOMAIN_NAME`:9090````|.
+You can also visit |https://`DOMAIN_NAME`:9090|.
 
-The login screen, |```username: `LETSENCRYPT_EMAIL```` and ```password: `PGA_CONTROLPASS````| in the `.env` file.
+The login screen, |username: `LETSENCRYPT_EMAIL` and password: `PGA_CONTROLPASS`| in the `.env` file.
 
 You don't see the login page in your browser;\
 pgAdmin runs as the pgadmin user (UID: 5050) in the pgadmin group (GID: 5050) in the container.
