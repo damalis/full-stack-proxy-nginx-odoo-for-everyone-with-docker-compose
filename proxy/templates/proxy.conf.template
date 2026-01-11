@@ -93,7 +93,7 @@ server {
 		proxy_set_header	Connection	$connection_upgrade;
 		proxy_redirect off;
 		proxy_cookie_flags session_id samesite=lax secure;  # requires nginx 1.19.8  
-		proxy_set_header        X-Forwarded-Ssl $proxy_x_forwarded_ssl;
+		proxy_set_header	X-Forwarded-Ssl $proxy_x_forwarded_ssl;
 	}
 	#
 	# common gzip

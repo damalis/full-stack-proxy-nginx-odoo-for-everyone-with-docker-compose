@@ -283,7 +283,7 @@ Send Email Node;
 
 SMTP account: ```Host: mail; Port: 1025; SSL/TLS: off;```
 
-The authorize screen: |```user: `DB_USER````| and |```password: `DB_PASSWORD````| in the `.env` file.
+The authorize screen: |user: `DB_USER`| and |password: `DB_PASSWORD`| in the `.env` file.
 
 #### Database
 
