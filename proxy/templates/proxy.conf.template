@@ -107,7 +107,7 @@ server {
 server {
 	#listen 443 ssl;
 	#
-	server_name mail.${NGINX_HOST};
+	#server_name mail.${NGINX_HOST};
 	
 	location / {		
 		proxy_pass	http://docker_mail;		
