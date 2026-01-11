@@ -5,6 +5,8 @@ services:
             database:
                 condition: service_healthy
         image: 'odoo:${ODOO_IMAGE_VERSION}'
+        user: root
+        tty: true
         container_name: odoo
         networks:
             - backend
