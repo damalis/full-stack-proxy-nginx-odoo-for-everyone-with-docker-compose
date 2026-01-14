@@ -267,10 +267,6 @@ fi
 sudo sysctl -w vm.overcommit_memory=1
 # Apply sysctl params without reboot
 sudo sysctl -p
-##########
-# Apply sysctl params without reboot
-##########
-#sudo sysctl --system
 
 if ps -p 1 -o comm= | grep -q systemd
 then
