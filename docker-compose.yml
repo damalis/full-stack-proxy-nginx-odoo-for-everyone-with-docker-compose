@@ -26,7 +26,7 @@ services:
             USER: '${DB_USER}'
             PASSWORD: '${DB_PASSWORD}'
             TZ: '${LOCAL_TIMEZONE}'
-        command: bash -c "TMP=$$(mktemp) && grep -vF -e 'db_user' -e 'db_password' -e 'db_name' /etc/odoo/odoo.conf > $$TMP && echo -e 'db_user = ${DB_USER}\\ndb_password = ${DB_PASSWORD}\\ndb_name = ${DB_NAME}' >> $$TMP && cp $$TMP /etc/odoo/odoo.conf && odoo -d ${DB_NAME} --db_user=${DB_USER} --db_password=${DB_PASSWORD} -i base"
+        command: bash -c "TMP=$$(mktemp) && grep -vF -e 'db_user' -e 'db_password' -e 'db_name' -e 'timezone' -e 'email_from' /etc/odoo/odoo.conf > $$TMP && echo -e 'db_user = ${DB_USER}\\ndb_password = ${DB_PASSWORD}\\ndb_name = ${DB_NAME}\\ntimezone = ${LOCAL_TIMEZONE}\\nemail_from = \"${LETSENCRYPT_EMAIL}\"' >> $$TMP && cp $$TMP /etc/odoo/odoo.conf && odoo -d ${DB_NAME} --db_user=${DB_USER} --db_password=${DB_PASSWORD} -i base"
 
     certbot:
         depends_on:
