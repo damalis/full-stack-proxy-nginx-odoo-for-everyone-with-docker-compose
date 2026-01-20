@@ -266,7 +266,7 @@ fi
 # fixed; WARNING Memory overcommit must be enabled!
 sudo sysctl -w vm.overcommit_memory=1
 # Apply sysctl params without reboot
-sudo sysctl -p
+sudo sysctl -p > /dev/null 2>&1
 
 if ps -p 1 -o comm= | grep -q systemd
 then
@@ -420,22 +420,22 @@ then
 	ssl_snippet="echo 'Generated Self-signed SSL Certificate at localhost'"
 	if [ "$lpms" == "apk" ]
 	then
-		sudo apk add --no-cache nss-tools go git
+		sudo apk add --no-cache nss-tools go
 	elif [ "$lpms" == "dnf" ]
 	then
-		sudo dnf -y install nss-tools golang git
+		sudo dnf -y install nss-tools golang
 	elif [ "$lpms" == "yum" ]
 	then
-		sudo yum -y install nss-tools golang git
+		sudo yum -y install nss-tools golang
 	elif [ "$lpms" == "zypper" ]
 	then
-		sudo zypper install -y mozilla-nss-tools go git
+		sudo zypper install -y mozilla-nss-tools go
 	elif [ "$lpms" == "apt" ]
 	then
-		sudo apt -y install libnss3-tools golang git
+		sudo apt -y install libnss3-tools golang
 	elif [ "$lpms" == "pacman" ]
 	then
-		sudo pacman -S --noconfirm nss go git
+		sudo pacman -S --noconfirm nss go
 	else
 		echo
 		echo "No supported package manager found"
@@ -445,7 +445,7 @@ then
 	sudo rm -Rf mkcert && git clone https://github.com/FiloSottile/mkcert &&
 	cd ./mkcert
 	sudo go build -ldflags "-X main.Version=$(git describe --tags)"
-	sudo ./mkcert -uninstall && sudo ./mkcert -install && sudo ./mkcert -key-file privkey.pem -cert-file chain.pem $domain_name *.$domain_name && sudo cat privkey.pem chain.pem > fullchain.pem && sudo mkdir -p ../certbot/live/$domain_name && sudo mv *.pem ../certbot/live/$domain_name && sudo chown -R 5050:5050 ../certbot/live/$domain_name
+	./mkcert -uninstall && ./mkcert -install && ./mkcert -key-file privkey.pem -cert-file chain.pem $domain_name *.$domain_name && sudo cat privkey.pem chain.pem > fullchain.pem && sudo mkdir -p ../certbot/live/$domain_name && sudo mv *.pem ../certbot/live/$domain_name && sudo chown -R 5050:5050 ../certbot/live/$domain_name
 	cd ..
 	echo "Ok."
 else
@@ -527,7 +527,7 @@ case "$choice" in
   * ) echo "Invalid input! Aborting now..."; exit 0;;
 esac
 
-\cp env.example .env
+sudo \cp env.example .env
 
 sed -i 's/example.com/'$domain_name'/' .env
 sed -i 's/email@domain.com/'$email'/' .env
