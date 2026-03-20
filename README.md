@@ -188,7 +188,7 @@ then reloading for proxy ssl configuration
 docker container restart proxy
 ```
 
-The containers are now built and running. You should be able to access the odoo installation with the configured IP in the browser address. `https://example.com`.
+The containers are now built and running. You should be able to access the odoo installation with the configured IP in the browser address. `https://DOMAIN_NAME`.
 
 For convenience you may add a new entry into your hosts file.
 
@@ -200,7 +200,7 @@ docker compose -f portainer-docker-compose.yml -p portainer up -d
 
 manage docker with [Portainer](https://www.portainer.io/) is the definitive container management tool for Docker, Docker Swarm with it's highly intuitive GUI and API. 
 
-You can also visit `https://example.com:9001` to access portainer after starting the containers.
+You can also visit `https://DOMAIN_NAME:9001` to access portainer after starting the containers.
 
 ### Usage
 
